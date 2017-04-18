@@ -93,7 +93,7 @@ class DomainRecord extends AbstractApi
                 break;
 
             case 'MX':
-                $content = ['type' => $type, 'data' => $data, 'priority' => $priority];
+                $content = ['type' => $type, 'name' => $name, 'data' => $data, 'priority' => $priority];
                 break;
 
             default:
@@ -123,7 +123,7 @@ class DomainRecord extends AbstractApi
     public function update($domainName, $recordId, $name = null, $data = null, $priority = null, $port = null, $weight = null)
     {
         $content = compact('name', 'data', 'priority', 'port', 'weight');
-        $content = array_filter($content, function($val){
+        $content = array_filter($content, function ($val) {
             return $val !== null;
         });
 
